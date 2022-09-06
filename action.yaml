@@ -1,0 +1,40 @@
+name: 'cac-deploy'
+description: 'Updates image tags in a configuration-as-code repository'
+author: '@cam3ron2'
+branding:
+  icon: 'file-plus'
+  color: 'blue'
+
+inputs:
+  image_metadata:
+    description: 'Image metadata from docker buildx'
+    required: true
+    
+outputs:
+  imageid:
+    description: 'Image ID'
+    value: '{{ steps.push.imageid }}'
+  digest:
+    description: 'Image digest'
+    value: '{{ steps.push.digest }}'
+  metadata:
+    description: 'Build result metadata'
+    value: '{{ steps.push.metadata }}'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install JQ
+      shell: bash
+      run: |
+        apt-get update
+        apt-get install -y jq gh
+        new=$(echo ${{ inputs.image_metadata }} | jq -r '."image.name"' | tr ',' '\n' | grep -Ev 'main|master' | head -n 1 | sed -e 's/[]\/$*.^[]/\\&/g')
+        image=$(echo ${new} | cut -d ':' -f1)
+
+        files=$(grep -r "${image}" | cut -d ':' -f1 | sort | uniq)
+        for f in ${files}; do
+          sed -i "s/${image}:.*$/${new}/g" ${f}
+        done
+
+        

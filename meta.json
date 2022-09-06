@@ -1,0 +1,46 @@
+  {
+    "cache.manifest": "{\"mediaType\":\"application/vnd.oci.image.index.v1+json\",\"digest\":\"sha256:6d18086284b3a7713966ed02721ad04e0317b89bd3d6e27f796665fe5dd996f4\",\"size\":9473}",
+    "containerimage.buildinfo/linux/amd64": {
+      "frontend": "dockerfile.v0",
+      "attrs": {
+        "filename": "Dockerfile"
+      },
+      "sources": [
+        {
+          "type": "docker-image",
+          "ref": "docker.io/library/alpine:latest",
+          "pin": "sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad"
+        },
+        {
+          "type": "docker-image",
+          "ref": "docker.io/library/golang:latest",
+          "pin": "sha256:d3f734e1f46ec36da8c1bce67cd48536138085289e24cfc8765f483c401b7d96"
+        }
+      ]
+    },
+    "containerimage.buildinfo/linux/arm64": {
+      "frontend": "dockerfile.v0",
+      "attrs": {
+        "filename": "Dockerfile"
+      },
+      "sources": [
+        {
+          "type": "docker-image",
+          "ref": "docker.io/library/alpine:latest",
+          "pin": "sha256:bc41182d7ef5ffc53a40b044e725193bc10142a1243f395ee852a8d9730fc2ad"
+        },
+        {
+          "type": "docker-image",
+          "ref": "docker.io/library/golang:latest",
+          "pin": "sha256:d3f734e1f46ec36da8c1bce67cd48536138085289e24cfc8765f483c401b7d96"
+        }
+      ]
+    },
+    "containerimage.descriptor": {
+      "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
+      "digest": "sha256:6f30f9b39e0b72721ea801c9bbf94ef7a05f8b4026f7cbb762d7c870c3e63f38",
+      "size": 743
+    },
+    "containerimage.digest": "sha256:6f30f9b39e0b72721ea801c9bbf94ef7a05f8b4026f7cbb762d7c870c3e63f38",
+    "image.name": "ghcr.io/cam3ron2/example-app:main,ghcr.io/cam3ron2/example-app:sha-0411e5a"
+  }
